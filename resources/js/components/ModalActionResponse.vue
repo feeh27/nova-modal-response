@@ -55,6 +55,12 @@ export default {
         if (true === Nova.config('nova_modal_response')?.emit_action_executed_on_modal_mounted) {
             Nova.$emit('action-executed');
         }
+
+        Nova.$on('close-modal-action-response', () => this.handleClose());
+    },
+
+    unmounted() {
+        Nova.$off('close-modal-action-response');
     },
 
     props: {
